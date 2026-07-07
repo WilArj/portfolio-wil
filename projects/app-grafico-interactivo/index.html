@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualizador de Datos SVG | Experimento Portfolio</title>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="app-header">
+        <a href="../../index.html" class="back-link">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            Volver al Portfolio
+        </a>
+        <h1 class="app-title">Visualizador SVG</h1>
+        <p class="app-subtitle">Graficación dinámica mediante vectores SVG interactivos, animaciones de transición y paneles de entrada de datos.</p>
+    </header>
+
+    <main class="app-container">
+        <div class="dashboard-grid">
+            <!-- Panel izquierdo: El gráfico SVG -->
+            <div class="card chart-card">
+                <div class="chart-header">
+                    <h2 id="chart-title">Métricas de Productividad</h2>
+                    <div class="chart-options">
+                        <button id="btn-type-line" class="btn-icon active" title="Gráfico de Líneas">
+                            Línea
+                        </button>
+                        <button id="btn-type-area" class="btn-icon" title="Gráfico de Área">
+                            Área
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="svg-container">
+                    <svg id="data-svg" viewBox="0 0 600 320" preserveAspectRatio="xMidYMid meet">
+                        <!-- Definiciones para gradientes -->
+                        <defs>
+                            <linearGradient id="area-grad" x1="0" y1="0" x2="0" y2="1">
+                                <stop offset="0%" stop-color="var(--accent)" stop-opacity="0.25"/>
+                                <stop offset="100%" stop-color="var(--accent)" stop-opacity="0.0"/>
+                            </linearGradient>
+                        </defs>
+                        <!-- Grid Lines, Paths and Tooltips will be injected by JavaScript -->
+                    </svg>
+                    <!-- Tooltip flotante HTML -->
+                    <div id="chart-tooltip" class="tooltip-box"></div>
+                </div>
+            </div>
+
+            <!-- Panel derecho: Controles y Entrada de Datos -->
+            <div class="card controls-card">
+                <h3>Controles de Visualización</h3>
+                
+                <div class="control-section">
+                    <label class="input-label">Seleccionar Dataset</label>
+                    <select id="dataset-selector" class="custom-select">
+                        <option value="productivity">Productividad Semanal (Horas)</option>
+                        <option value="visits">Visitas al Portfolio (Usuarios)</option>
+                        <option value="coffee">Consumo de Café (Tazas)</option>
+                    </select>
+                </div>
+
+                <div class="control-section">
+                    <label class="input-label">Añadir Nuevo Punto</label>
+                    <form id="add-data-form" class="data-form">
+                        <div class="form-row">
+                            <input type="text" id="input-label" placeholder="Día (ej. Dom)" required class="custom-input">
+                            <input type="number" id="input-value" placeholder="Valor" required min="0" max="1000" class="custom-input">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Añadir Punto</button>
+                    </form>
+                </div>
+
+                <div class="control-section">
+                    <div class="list-header">
+                        <label class="input-label">Puntos Actuales</label>
+                        <button id="btn-reset-data" class="btn-reset">Restablecer</button>
+                    </div>
+                    <ul id="data-points-list" class="points-list">
+                        <!-- Dynamically filled by JS -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="app-footer">
+        <p>Experimento de manipulación directa de nodos SVG y transformaciones matemáticas. Responsive y adaptativo.</p>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>

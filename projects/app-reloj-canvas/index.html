@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reloj Canvas | Experimento Portfolio</title>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="app-header">
+        <a href="../../index.html" class="back-link">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            Volver al Portfolio
+        </a>
+        <h1 class="app-title">Reloj Canvas</h1>
+        <p class="app-subtitle">Renderizado dinámico de precisión y físicas de manecillas fluidas en 2D Canvas.</p>
+    </header>
+
+    <main class="app-container">
+        <div class="canvas-wrapper">
+            <canvas id="clock-canvas" width="500" height="500"></canvas>
+        </div>
+
+        <div class="controls-panel">
+            <div class="control-group">
+                <span class="control-label">Modo de Barrido (Segundero)</span>
+                <div class="toggle-buttons">
+                    <button id="btn-sweep-smooth" class="btn-toggle active">Continuo (Suave)</button>
+                    <button id="btn-sweep-tick" class="btn-toggle">Tic-Tac</button>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <span class="control-label">Tema Visual</span>
+                <div class="theme-buttons">
+                    <button id="theme-dark" class="btn-theme active" data-theme="dark">Oscuro</button>
+                    <button id="theme-light" class="btn-theme" data-theme="light">Claro</button>
+                    <button id="theme-accent" class="btn-theme" data-theme="accent">Cyber</button>
+                </div>
+            </div>
+
+            <div class="control-group check-group">
+                <label class="checkbox-container">
+                    <input type="checkbox" id="show-milliseconds" checked>
+                    <span class="checkmark"></span>
+                    Mostrar Milisegundos
+                </label>
+                <label class="checkbox-container">
+                    <input type="checkbox" id="show-digital" checked>
+                    <span class="checkmark"></span>
+                    Mostrar Reloj Digital
+                </label>
+            </div>
+        </div>
+    </main>
+
+    <footer class="app-footer">
+        <p>Experimento en Canvas 2D y RequestAnimationFrame. Ajustado a 60 FPS.</p>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>

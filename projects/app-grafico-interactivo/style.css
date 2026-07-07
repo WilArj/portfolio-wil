@@ -1,0 +1,416 @@
+:root {
+    --bg-primary: #09090b;
+    --bg-secondary: #141416;
+    --text-primary: #fafafa;
+    --text-secondary: #a1a1aa;
+    --accent: #6366f1;
+    --accent-glow: rgba(99, 102, 241, 0.12);
+    --border-color: rgba(255, 255, 255, 0.06);
+    --font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    --transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (prefers-color-scheme: light) {
+    :root {
+        --bg-primary: #f8fafc;
+        --bg-secondary: #ffffff;
+        --text-primary: #0f172a;
+        --text-secondary: #475569;
+        --border-color: rgba(15, 23, 42, 0.08);
+        --accent: #4f46e5;
+        --accent-glow: rgba(79, 70, 229, 0.08);
+    }
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: var(--font-family);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem;
+    overflow-x: hidden;
+}
+
+/* Header */
+.app-header {
+    width: 100%;
+    max-width: 900px;
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    align-self: flex-start;
+    transition: var(--transition);
+}
+
+.back-link:hover {
+    color: var(--accent);
+    transform: translateX(-2px);
+}
+
+.app-title {
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+}
+
+.app-subtitle {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+/* App Container Layout */
+.app-container {
+    width: 100%;
+    max-width: 900px;
+    flex-grow: 1;
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    width: 100%;
+}
+
+@media (min-width: 800px) {
+    .dashboard-grid {
+        grid-template-columns: 2fr 1fr;
+    }
+}
+
+/* Cards */
+.card {
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 1.5rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+}
+
+.chart-card {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.chart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chart-header h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+}
+
+.chart-options {
+    display: flex;
+    background-color: var(--bg-primary);
+    padding: 0.25rem;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+
+.btn-icon {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    padding: 0.4rem 0.8rem;
+    font-family: inherit;
+    font-size: 0.8rem;
+    font-weight: 500;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.btn-icon:hover {
+    color: var(--text-primary);
+}
+
+.btn-icon.active {
+    background-color: var(--bg-secondary);
+    color: var(--accent);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* SVG Graphic container */
+.svg-container {
+    position: relative;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.02);
+    border-radius: 12px;
+    border: 1px dashed var(--border-color);
+    overflow: visible;
+}
+
+#data-svg {
+    width: 100%;
+    height: auto;
+    display: block;
+    overflow: visible;
+}
+
+/* SVG specific styles */
+.grid-line {
+    stroke: var(--border-color);
+    stroke-width: 1;
+    stroke-dasharray: 4 4;
+}
+
+.axis-line {
+    stroke: var(--text-secondary);
+    stroke-width: 1;
+    opacity: 0.3;
+}
+
+.axis-label {
+    font-size: 10px;
+    fill: var(--text-secondary);
+    font-family: var(--font-family);
+}
+
+.chart-path {
+    fill: none;
+    stroke: var(--accent);
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: stroke-dasharray 0.6s ease-in-out, d 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.chart-area {
+    fill: url(#area-grad);
+    transition: d 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.chart-point {
+    fill: var(--bg-secondary);
+    stroke: var(--accent);
+    stroke-width: 2.5;
+    cursor: pointer;
+    transition: r 0.2s ease, fill 0.2s ease;
+}
+
+.chart-point:hover, .chart-point.active {
+    r: 7;
+    fill: var(--accent);
+}
+
+.hover-line {
+    stroke: var(--text-secondary);
+    stroke-width: 1;
+    stroke-dasharray: 2 2;
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+/* HTML Tooltip Box */
+.tooltip-box {
+    position: absolute;
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--accent);
+    color: var(--text-primary);
+    padding: 0.5rem 0.75rem;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    pointer-events: none;
+    opacity: 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: opacity 0.2s ease, transform 0.1s ease;
+    z-index: 10;
+    transform: translate(-50%, -100%);
+    white-space: nowrap;
+}
+
+.tooltip-box::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+    width: 8px;
+    height: 8px;
+    background-color: var(--bg-secondary);
+    border-right: 1px solid var(--accent);
+    border-bottom: 1px solid var(--accent);
+}
+
+/* Controls Panel */
+.controls-card {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.controls-card h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.75rem;
+}
+
+.control-section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.input-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-secondary);
+}
+
+/* Select, Form Inputs & Buttons */
+.custom-select, .custom-input {
+    width: 100%;
+    padding: 0.6rem;
+    font-family: inherit;
+    font-size: 0.85rem;
+    background-color: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    border-radius: 8px;
+    transition: var(--transition);
+}
+
+.custom-select:focus, .custom-input:focus {
+    outline: none;
+    border-color: var(--accent);
+}
+
+.data-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-row {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.btn-primary {
+    background-color: var(--accent);
+    color: white;
+    border: none;
+    font-family: inherit;
+    font-size: 0.85rem;
+    font-weight: 500;
+    padding: 0.6rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.btn-primary:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+.list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btn-reset {
+    background: none;
+    border: none;
+    color: var(--accent);
+    font-size: 0.75rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btn-reset:hover {
+    text-decoration: underline;
+}
+
+/* Data points list */
+.points-list {
+    list-style: none;
+    max-height: 150px;
+    overflow-y: auto;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background-color: var(--bg-primary);
+}
+
+.point-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0.75rem;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 0.85rem;
+}
+
+.point-item:last-child {
+    border-bottom: none;
+}
+
+.point-label {
+    font-weight: 500;
+}
+
+.point-value {
+    color: var(--text-secondary);
+}
+
+.btn-delete-point {
+    background: none;
+    border: none;
+    color: #ef4444;
+    cursor: pointer;
+    font-size: 0.9rem;
+    line-height: 1;
+    padding: 0.2rem;
+    opacity: 0.6;
+    transition: var(--transition);
+}
+
+.btn-delete-point:hover {
+    opacity: 1;
+}
+
+/* App Footer */
+.app-footer {
+    width: 100%;
+    max-width: 900px;
+    margin-top: 2rem;
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}

@@ -1,0 +1,287 @@
+/* CSS Clone Brutalista - Miggy Fajardo Style */
+
+:root {
+    --bg-color: #FCFCFC;
+    --text-color: #000000;
+    --text-muted: #999999;
+    --text-light-muted: #AEAEAE;
+    --font-primary: 'Britanica Semi Condensed', 'Britanica', 'Barlow Semi Condensed', -apple-system, sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-primary);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    min-height: 100vh;
+}
+
+::selection {
+    background: #A6F665;
+    color: #000000;
+}
+
+/* Navbar */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    font-size: 1.11rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    max-width: 1760px;
+    padding-top: 2.22rem;
+    padding-left: 1rem;
+    padding-right: 2.22rem;
+}
+
+.nav-highlight {
+    color: var(--text-color); 
+    background-color: #A6F665;
+    letter-spacing: 0.05em;
+    padding: 0 0.2rem;
+    margin-left: -0.2rem; /* Compensa el padding para que la letra empiece en la misma línea */
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+}
+
+.lang-toggle {
+    background: transparent;
+    border: none;
+    font-family: inherit;
+    font-size: 1.11rem;
+    font-weight: 400;
+    color: var(--text-color);
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background-color 0.2s, color 0.2s;
+    padding: 0 0.2rem;
+}
+
+.lang-toggle:hover {
+    background-color: #A6F665;
+}
+
+#about-link {
+    font-size: 0.55rem;
+}
+
+/* Main Layout */
+.content-container {
+    padding-top: 15vh; /* Push below navbar */
+    padding-left: 1rem;
+    padding-right: 2.22rem;
+    padding-bottom: 5rem;
+    max-width: 1760px;
+}
+
+.grid-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem; /* Reducido desde 4rem */
+}
+
+@media (min-width: 992px) {
+    .grid-row {
+        grid-template-columns: 4fr 6fr; /* Left col text, right col visuals/projects */
+        gap: 3rem; /* Reducido desde 6rem */
+    }
+}
+
+/* Typography & Content Blocks */
+.text-block {
+    margin-bottom: 2rem;
+}
+
+h3 {
+    font-size: 1rem; /* 30% smaller than 1.4rem */
+    line-height: 1.5;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    transition: opacity 0.2s ease-in-out;
+}
+
+h3 a {
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.2s ease-in-out;
+}
+
+h3 a:hover {
+    color: var(--text-color);
+}
+
+@media (min-width: 768px) {
+    h3 {
+        font-size: 1.15rem; /* 30% smaller than 1.66rem */
+        line-height: 1.5;
+    }
+}
+
+.links-block {
+    margin-top: 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.arrow-link {
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--text-color);
+}
+
+@media (min-width: 768px) {
+    .arrow-link {
+        font-size: 1.11rem;
+    }
+}
+
+.arrow-link a {
+    color: var(--text-color);
+    text-decoration: none;
+    position: relative;
+    padding-bottom: 2px;
+}
+
+.arrow-link a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: var(--text-color);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.arrow-link a:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+.arrow-link a.copied::after {
+    transform: scaleX(1);
+    background-color: #22c55e;
+}
+.arrow-link a.copied {
+    color: #22c55e;
+}
+
+/* Projects Column */
+.column-visuals {
+    position: relative;
+    min-height: 70vh; /* Asegura suficiente altura para mostrar la imagen de fondo */
+}
+
+.panel-label {
+    font-size: 1.77rem;
+    text-transform: uppercase;
+    color: var(--text-color);
+    margin-bottom: 2rem;
+    line-height: 1;
+    transition: opacity 0.2s ease-in-out;
+    position: relative;
+    z-index: 10;
+}
+
+.projects-list-container {
+    max-height: 35vh; /* Reducido para que solo se vean unos 3 proyectos de un vistazo */
+    overflow-y: auto;
+    padding-right: 1rem;
+    position: relative;
+    z-index: 10;
+}
+
+/* Scrollbar styling para un toque más limpio */
+.projects-list-container::-webkit-scrollbar {
+    width: 6px;
+}
+.projects-list-container::-webkit-scrollbar-track {
+    background: transparent;
+}
+.projects-list-container::-webkit-scrollbar-thumb {
+    background-color: var(--text-light-muted);
+}
+
+.project-item {
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--text-light-muted);
+    margin-bottom: 2rem;
+}
+
+.project-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.pp-title a {
+    font-size: 1.77rem;
+    font-weight: 400;
+    color: var(--text-color);
+    text-decoration: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: color 0.3s ease;
+}
+
+.pp-title a:hover {
+    color: var(--text-muted);
+}
+
+.pp-title span {
+    font-size: 1.2rem;
+    color: var(--text-light-muted);
+}
+
+.pp-meta {
+    margin-top: 0.8rem;
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    transition: opacity 0.2s ease-in-out;
+}
+
+/* Logo */
+.logo-container {
+    position: absolute;
+    bottom: -5rem; /* Ajuste para que se solape visualmente por debajo */
+    left: 0;
+    width: 100%;
+    z-index: 1;
+    pointer-events: none; /* Para que no estorbe al ratón */
+}
+
+.footer-logo {
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+}
+
+/* Footer Link */
+.footer-link-container {
+    position: fixed;
+    bottom: 2.22rem;
+    left: 1rem;
+    z-index: 100;
+}
