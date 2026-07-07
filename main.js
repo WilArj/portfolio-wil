@@ -33,6 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
             'bio-4': 'En este espacio quiero dar cabida a pequeños proyectos o ideas a las que dedico mi tiempo y cariño.',
             'projects-title': 'Proyectos',
             'project-1-desc': 'GIS / Big Data — Mapa censal de casi 200.000 ejemplares.',
+            'project-2-desc': 'Data & Visualization',
             'about-link': 'Sobre este portfolio',
             'back-link': 'Volver al inicio'
         },
@@ -43,6 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
             'bio-4': 'In this space, I want to make room for small projects or ideas to which I dedicate my time and care.',
             'projects-title': 'Projects',
             'project-1-desc': 'GIS / Big Data — Census map of nearly 200,000 specimens.',
+            'project-2-desc': 'Data & Visualization',
             'about-link': 'About this portfolio',
             'back-link': 'Back to home'
         }
@@ -68,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             // TextContent elements
-            const elementsToTranslate = ['bio-1', 'bio-2', 'bio-3', 'bio-4', 'projects-title', 'project-1-desc', 'about-link', 'back-link'];
+            const elementsToTranslate = ['bio-1', 'bio-2', 'bio-3', 'bio-4', 'projects-title', 'project-1-desc', 'project-2-desc', 'about-link', 'back-link'];
 
             elementsToTranslate.forEach(id => {
                 const element = document.getElementById(id);
