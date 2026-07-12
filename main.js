@@ -32,8 +32,9 @@ document.addEventListener('DOMContentLoaded', () => {
             'bio-3': 'Cuando no estoy investigando sobre alguna frikada tecnologica, probablemente me encuentres explorando la naturaleza en alguna de sus formas.',
             'bio-4': 'En este espacio quiero dar cabida a pequeños proyectos o ideas a las que dedico mi tiempo y cariño.',
             'projects-title': 'Proyectos',
-            'project-1-desc': 'GIS / Big Data — Mapa censal de casi 200.000 ejemplares.',
+            'project-1-desc': 'GIS & Big Data — Mapa censal del arbolado de Sevilla',
             'project-2-desc': 'Data & Visualization — Análisis de comportamiento del cernícalo vulgar',
+            'project-3-desc': 'GIS & Map Animation — Análisis espacial de la ciudad',
             'about-link': 'Sobre este portfolio',
             'back-link': 'Volver al inicio'
         },
@@ -43,8 +44,9 @@ document.addEventListener('DOMContentLoaded', () => {
             'bio-3': "When I'm not researching some tech geekery, you'll probably find me exploring nature in some form or another.",
             'bio-4': 'In this space, I want to make room for small projects or ideas to which I dedicate my time and care.',
             'projects-title': 'Projects',
-            'project-1-desc': 'GIS / Big Data — Census map of nearly 200,000 specimens.',
+            'project-1-desc': "GIS & Big Data — Census map of Seville's trees",
             'project-2-desc': 'Data & Visualization — Behavioral analysis of the common kestrel',
+            'project-3-desc': 'GIS & Map Animation — Spatial analysis of the city',
             'about-link': 'About this portfolio',
             'back-link': 'Back to home'
         }
@@ -70,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             // TextContent elements
-            const elementsToTranslate = ['bio-1', 'bio-2', 'bio-3', 'bio-4', 'projects-title', 'project-1-desc', 'project-2-desc', 'about-link', 'back-link'];
+            const elementsToTranslate = ['bio-1', 'bio-2', 'bio-3', 'bio-4', 'projects-title', 'project-1-desc', 'project-2-desc', 'project-3-desc', 'about-link', 'back-link'];
 
             elementsToTranslate.forEach(id => {
                 const element = document.getElementById(id);
