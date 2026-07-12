@@ -55,10 +55,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // Helper for HTML translations
     const htmlTranslations = {
         'ES': {
-            'about-text-1': 'Este portfolio basa su identidad estetica completamente en el trabajo de <a href="https://miggyfajardo.com/" target="_blank" rel="noopener noreferrer">Miggy Fajardo</a>, esto se hace como total gesto de respeto al autor original de la idea y como crítica e invitación a la reflexión sobre la identidad de marca, la originalidad y el concepto de plagio y copia en lo etéreo de las redes.'
+            'about-text-1': 'Este portfolio basa su identidad estetica completamente en el trabajo de <a href="https://miggyfajardo.com/" target="_blank" rel="noopener noreferrer">Miggy Fajardo</a>, esto se hace como total gesto de respeto al autor original de la idea y como crítica e invitación a la reflexión sobre la identidad de marca, la originalidad y el concepto de plagio y copia en las redes.'
         },
         'EN': {
-            'about-text-1': 'This portfolio bases its aesthetic identity entirely on the work of <a href="https://miggyfajardo.com/" target="_blank" rel="noopener noreferrer">Miggy Fajardo</a>, this is done as a total gesture of respect to the original author of the idea and as a critique and invitation to reflect on brand identity, originality, and the concept of plagiarism and copying in the ethereal nature of the web.'
+            'about-text-1': 'This portfolio bases its aesthetic identity entirely on the work of <a href="https://miggyfajardo.com/" target="_blank" rel="noopener noreferrer">Miggy Fajardo</a>, this is done as a total gesture of respect to the original author of the idea and as a critique and invitation to reflect on brand identity, originality, and the concept of plagiarism and copying on the web.'
         }
     }
 
